@@ -1,7 +1,8 @@
 ---
 - hosts: all
   roles:
+    - baseline
+    - packages
     - dotfiles
     - vim
     - git
-    - packages

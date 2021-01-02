@@ -1,3 +1,7 @@
+- name: Include ubuntu specific packages
+  include: Ubuntu.yml
+  when: ansible_distribution == "Ubuntu"
+
 - name: Install packages
   homebrew:
     name:
