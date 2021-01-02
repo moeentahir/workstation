@@ -1,0 +1,8 @@
+- name: Install packages
+  homebrew:
+    name:
+      - bat
+      - jq
+      - tree
+      - tmux
+    state: latest
