@@ -1,7 +1,7 @@
 - name: Clone dotfiles repo
   git:
-    repo: "{{ item.repo }}"
-    dest: "{{ item.dest }}"
+    repo: '{{ item.repo }}'
+    dest: '{{ item.dest }}'
     force: true
   with_items:
-    - { dest: "~/.dotfiles/", repo: "https://github.com/moeentahir/dotfiles" }
+  - {dest: ~/.dotfiles/, repo: https://github.com/moeentahir/dotfiles}

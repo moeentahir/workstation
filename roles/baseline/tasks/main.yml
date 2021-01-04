@@ -1,4 +1,0 @@
-- name: Install homebrew
-  shell: -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-  args:
-    warn: no

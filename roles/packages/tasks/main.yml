@@ -4,10 +4,10 @@
 
 - name: Install packages
   homebrew:
-    name:
-      - bat
-      - jq
-      - tree
-      - tmux
-      - fzf
+    - bat
+    - jq
+    - tree
+    - tmux
+    - fzf
+    - yamllint
     state: latest
