@@ -4,6 +4,7 @@
 
 - name: Install packages
   homebrew:
+    name:
     - bat
     - jq
     - tree

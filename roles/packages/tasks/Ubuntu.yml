@@ -4,13 +4,13 @@
   ignore_errors: yes
 
 - name: Install homebrew
-  shell: '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+  shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   when: does_brew_exists.rc != 0
 
-- name: Set homebrew environment variables 
+- name: Set homebrew environment variables
   blockinfile:
     create: yes
-    dest: '~/.profile'
+    dest: ~/.profile
     mode: 0644
     state: present
     block: |

@@ -3,5 +3,6 @@
     repo: '{{ item.repo }}'
     dest: '{{ item.dest }}'
     force: true
+    version: main
   with_items:
   - {dest: ~/.dotfiles/, repo: https://github.com/moeentahir/dotfiles}
