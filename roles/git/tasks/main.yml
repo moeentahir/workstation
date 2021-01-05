@@ -13,3 +13,4 @@
     state: link
   with_items:
     - { dest: "~/.gitconfig", src: "~/.dotfiles/git/gitconfig" }
+    - { dest: "~/.gitignore", src: "~/.dotfiles/git/gitignore" }
