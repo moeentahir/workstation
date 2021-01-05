@@ -9,4 +9,5 @@
       - jq
       - tree
       - tmux
+      - fzf
     state: latest
