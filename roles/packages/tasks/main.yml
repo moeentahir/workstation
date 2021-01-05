@@ -1,4 +1,13 @@
-- name: Include ubuntu specific packages
+- name: Check if homebrew is installed
+  shell: brew info >/dev/null 2>&1
+  register: does_brew_exists
+  ignore_errors: yes
+
+- name: Install homebrew
+  shell: '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+  when: does_brew_exists.rc != 0
+
+- name: Include ubuntu specific tasks
   include: Ubuntu.yml
   when: ansible_distribution == "Ubuntu"
 
