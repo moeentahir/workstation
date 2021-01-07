@@ -20,4 +20,5 @@
     - tmux
     - fzf
     - yamllint
+    - diff-so-fancy
     state: latest
