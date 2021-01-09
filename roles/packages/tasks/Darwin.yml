@@ -1,0 +1,21 @@
+- name: Check if homebrew is installed
+  shell: brew info >/dev/null 2>&1
+  register: does_brew_exists
+  ignore_errors: yes
+
+- name: Install homebrew
+  shell: '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+  when: does_brew_exists.rc != 0
+
+- name: Install packages
+  homebrew:
+    name:
+    - bat
+    - jq
+    - tree
+    - tmux
+    - fzf
+    - yamllint
+    - diff-so-fancy
+    state: latest
+

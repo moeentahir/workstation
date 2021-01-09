@@ -1,12 +1,3 @@
-- name: Clone repos
-  git:
-    repo: '{{ item.repo }}'
-    dest: '{{ item.dest }}'
-    force: true
-    version: master
-  with_items:
-  - { dest: "~/.dotfiles/vim/vim-colors-solarized", repo: "https://github.com/altercation/vim-colors-solarized" }
-
 - name: Copy files
   copy:
     src: '{{ item.src }}'

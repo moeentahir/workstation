@@ -1,24 +1,17 @@
-- name: Check if homebrew is installed
-  shell: brew info >/dev/null 2>&1
-  register: does_brew_exists
-  ignore_errors: yes
-
-- name: Install homebrew
-  shell: '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
-  when: does_brew_exists.rc != 0
-
 - name: Include ubuntu specific tasks
   include: Ubuntu.yml
   when: ansible_distribution == "Ubuntu"
+  
+- name: Include osx specific tasks
+  include: Darwin.yml
+  when: ansible_distribution == "Darwin"
 
-- name: Install packages
-  homebrew:
-    name:
-    - bat
-    - jq
-    - tree
-    - tmux
-    - fzf
-    - yamllint
-    - diff-so-fancy
-    state: latest
+- name: Clone repos
+  git:
+    repo: '{{ item.repo }}'
+    dest: '{{ item.dest }}'
+    force: true
+    version: master
+  with_items:
+  - { dest: "~/.dotfiles/vim/vim-colors-solarized", repo: "https://github.com/altercation/vim-colors-solarized" }
+  - { dest: "~/.dotfiles/packages/diff-so-fancy", repo: "https://github.com/so-fancy/diff-so-fancy" }
