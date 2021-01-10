@@ -12,3 +12,8 @@
     name: "{{ common_packages + os_specific_packages }}"
     state: latest
 
+- name: Install cask
+  community.general.homebrew_cask:
+    name: 
+    - aws-vault
+    state: present
