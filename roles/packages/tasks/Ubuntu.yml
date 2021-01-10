@@ -1,15 +1,15 @@
-- name: Install apt packages
-  apt:
-    name: "{{ common_packages + os_specific_packages }}"
-    state: present
-  become: yes
-  become_user: root
-
-# - name: Set homebrew environment variables 
-#   blockinfile:
-#     create: yes
-#     dest: '~/.bashrc'
-#     mode: 0644
+# - name: Install apt packages
+#   apt:
+#     name: "{{ os_specific_packages }}"
 #     state: present
-#     block: |
-#       eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+#   become: yes
+#   become_user: root
+
+- name: Set homebrew environment variables 
+  blockinfile:
+    create: yes
+    dest: '~/.bashrc'
+    mode: 0644
+    state: present
+    block: |
+      eval $($HOME/.linuxbrew/bin/brew shellenv)
