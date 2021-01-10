@@ -1,3 +1,13 @@
+- name: Load a variable file based on the OS type, or a default if not found. Using free-form to specify the file.
+  include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - '{{ansible_distribution}}.yml'
+        - '{{ansible_os_family}}.yml'
+      paths:
+        - 'vars'
+
 - name: Include ubuntu specific tasks
   include: Ubuntu.yml
   when: ansible_distribution == "Ubuntu"
@@ -15,3 +25,7 @@
   with_items:
   - { dest: "~/.dotfiles/vim/vim-colors-solarized", repo: "https://github.com/altercation/vim-colors-solarized" }
   - { dest: "~/.dotfiles/packages/diff-so-fancy", repo: "https://github.com/so-fancy/diff-so-fancy" }
+  - { dest: "~/.fzf", repo: "https://github.com/junegunn/fzf.git" }
+  
+- name: Post package commands
+  shell: ~/.fzf/install

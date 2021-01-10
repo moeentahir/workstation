@@ -9,13 +9,6 @@
 
 - name: Install packages
   homebrew:
-    name:
-    - bat
-    - jq
-    - tree
-    - tmux
-    - fzf
-    - yamllint
-    - diff-so-fancy
+    name: "{{ common_packages + os_specific_packages }}"
     state: latest
 

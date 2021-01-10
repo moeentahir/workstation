@@ -1,13 +1,6 @@
 - name: Install apt packages
   apt:
-    name: 
-    - vim-gtk
-    - bat
-    - jq
-    - tree
-    - tmux
-    - fzf
-    - yamllint
+    name: "{{ common_packages + os_specific_packages }}"
     state: present
   become: yes
   become_user: root
