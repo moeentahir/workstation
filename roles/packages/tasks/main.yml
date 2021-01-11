@@ -3,10 +3,10 @@
   vars:
     params:
       files:
-        - '{{ansible_distribution}}.yml'
-        - '{{ansible_os_family}}.yml'
+      - '{{ ansible_distribution }}.yml'
+      - '{{ ansible_os_family }}.yml'
       paths:
-        - 'vars'
+      - 'vars'
 
 - name: Check if homebrew is installed
   shell: which brew >/dev/null 2>&1
@@ -25,7 +25,7 @@
 - name: Include ubuntu specific tasks
   include: Ubuntu.yml
   when: ansible_distribution == "Ubuntu"
-  
+
 - name: Include MacOs specific tasks
   include: Darwin.yml
   when: ansible_distribution == "Darwin"
@@ -40,6 +40,10 @@
   - { dest: "~/.dotfiles/vim/vim-colors-solarized", repo: "https://github.com/altercation/vim-colors-solarized" }
   - { dest: "~/.dotfiles/packages/diff-so-fancy", repo: "https://github.com/so-fancy/diff-so-fancy" }
   - { dest: "~/.fzf", repo: "https://github.com/junegunn/fzf.git" }
-  
+
 - name: Post package commands
   shell: ~/.fzf/install
+
+- name: Install bottle python package
+  pip:
+    name: PyYAML

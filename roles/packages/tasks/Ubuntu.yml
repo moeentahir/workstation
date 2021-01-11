@@ -5,7 +5,7 @@
 #   become: yes
 #   become_user: root
 
-- name: Set homebrew environment variables 
+- name: Set homebrew environment variables
   blockinfile:
     create: yes
     dest: '~/.bashrc'
