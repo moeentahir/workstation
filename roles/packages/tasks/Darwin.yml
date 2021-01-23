@@ -3,8 +3,9 @@
     name: "{{ os_specific_packages }}"
     state: latest
 
-# - name: Install cask
-#   community.general.homebrew_cask:
-#     name: 
-#     - aws-vault
-#     state: present
+- name: Install cask
+  community.general.homebrew_cask:
+    name:
+    - aws-vault
+    - keycastr
+    state: present

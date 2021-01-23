@@ -28,7 +28,7 @@
 
 - name: Include MacOs specific tasks
   include: Darwin.yml
-  when: ansible_distribution == "Darwin"
+  when: ansible_os_family == "Darwin"
 
 - name: Clone repos
   git:
@@ -48,6 +48,6 @@
     - ~/.fzf/install
     - ~/.dotfiles/packages/powerline/install.sh
 
-- name: Install bottle python package
+- name: Install python packages
   pip:
     name: PyYAML

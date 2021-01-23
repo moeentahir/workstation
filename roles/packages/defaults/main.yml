@@ -6,4 +6,5 @@ common_packages:
   - tree
   - tmux
   - yamllint
+  - rg
 
