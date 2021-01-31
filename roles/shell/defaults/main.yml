@@ -1,3 +1,4 @@
 ---
 
-bashrc_path: "~/.dotfiles/shell/ubuntu-bashrc/"
+bashrc_path: "~/.dotfiles/shell/bashrc"
+zshrc_path: "~/.dotfiles/shell/zshrc"

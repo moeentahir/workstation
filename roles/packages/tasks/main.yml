@@ -12,23 +12,25 @@
   shell: which brew >/dev/null 2>&1
   register: does_brew_exists
   ignore_errors: yes
+  when: is_root_user
 
 - name: Install homebrew
   shell: '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
-  when: does_brew_exists.rc != 0
+  when: is_root_user and does_brew_exists.rc != 0 
 
 - name: Install homebrew packages
   homebrew:
     name: "{{ common_packages }}"
     state: latest
+  when: is_root_user
 
 - name: Include ubuntu specific tasks
   include: Ubuntu.yml
-  when: ansible_distribution == "Ubuntu"
+  when: ansible_distribution == "Ubuntu" and is_root_user
 
 - name: Include MacOs specific tasks
   include: Darwin.yml
-  when: ansible_os_family == "Darwin"
+  when: ansible_os_family == "Darwin" and is_root_user
 
 - name: Clone repos
   git:
@@ -41,12 +43,16 @@
   - { dest: "~/.dotfiles/packages/diff-so-fancy", repo: "https://github.com/so-fancy/diff-so-fancy" }
   - { dest: "~/.dotfiles/packages/powerline", repo: "https://github.com/powerline/fonts.git" }
   - { dest: "~/.fzf", repo: "https://github.com/junegunn/fzf.git" }
+  - { dest: "~/.dotfiles/packages/iTerm2-Color-Schemes", repo: "https://github.com/mbadolato/iTerm2-Color-Schemes" }
 
 - name: Post package commands
   shell: "{{ item }}"
   with_items:
     - ~/.fzf/install
     - ~/.dotfiles/packages/powerline/install.sh
+    - 'rm -rf $HOME/.oh-my-zsh'
+    - 'sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+    - 'curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh || true'
 
 - name: Install python packages
   pip:

@@ -9,10 +9,20 @@
       paths:
         - 'vars'
 
+- name: Copy files
+  copy:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    force: "{{ item.force | default('yes') }}"
+  with_items:
+  - {dest: ~/.zshrc.local, src: ~/.dotfiles/shell/zshrc.local, force: no}
+
 - name: Create symbolic link 
   file:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     state: link
+    force: yes
   with_items:
     - { dest: "~/.bashrc", src: "{{ bashrc_path }}" }
+    - { dest: "~/.zshrc", src: "{{ zshrc_path }}" }

@@ -3,8 +3,8 @@
   hosts: localhost
   roles:
   - packages
-  - shell
   - dotfiles
+  - shell
   - vim
   - git
 

@@ -1,12 +1,16 @@
 ---
-
 common_packages:
   - bat
-  - jq
-  - tree
-  - tmux
-  - yamllint
-  - rg
+  - diff-so-fancy
   - fzf
+  - htop
+  - jq
   - node
+  - rg
+  - tmux
+  - tree
+  - wget
+  - yamllint
+  - zsh
 
+is_root_user: true
