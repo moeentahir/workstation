@@ -2,11 +2,20 @@
   homebrew:
     name: "{{ os_specific_packages }}"
     state: latest
-
+- name: Tap a Homebrew repository, state present
+  community.general.homebrew_tap:
+    name: 
+    - adoptopenjdk/openjdk
+    - spring-io/tap
 - name: Install cask
   community.general.homebrew_cask:
     name:
     - aws-vault
     - keycastr
     - iterm2
+    - adoptopenjdk8
+    - adoptopenjdk11
+    - adoptopenjdk13
+    - anydo
+    - spring-boot
     state: present

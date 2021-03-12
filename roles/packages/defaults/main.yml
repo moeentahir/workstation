@@ -12,5 +12,6 @@ common_packages:
   - wget
   - yamllint
   - zsh
+  - gradle
 
 is_root_user: true
