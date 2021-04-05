@@ -17,4 +17,6 @@
     - adoptopenjdk11
     - adoptopenjdk13
     - anydo
+    - google-chrome
+    - google-backup-and-sync
     state: present
