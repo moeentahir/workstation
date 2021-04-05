@@ -17,5 +17,4 @@
     - adoptopenjdk11
     - adoptopenjdk13
     - anydo
-    - spring-boot
     state: present
