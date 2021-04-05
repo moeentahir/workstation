@@ -2,8 +2,8 @@
 - name: Setup dev machine
   hosts: localhost
   roles:
-  - packages
   - dotfiles
+  - packages
   - shell
   - vim
   - git
