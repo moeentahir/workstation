@@ -2,10 +2,5 @@
 - name: Setup dev machine
   hosts: localhost
   roles:
-  - dotfiles
-  - packages
-  - shell
-  - vim
-  - git
   - mac-settings
 

@@ -1,0 +1,66 @@
+---
+- name: Install base utilities
+  homebrew:
+    name: "{{ item }}"
+  with_items:
+    - m-cli
+    - dockutil
+
+- name: Remove all items from the Dock
+  shell: /usr/local/bin/dockutil --remove all
+
+- name: Set the default Dock items
+  shell: "/usr/local/bin/dockutil --add {{ item }} --no-restart"
+  with_items:
+    - /Applications/Safari.app
+    - "\"/System/Applications/App Store.app\""
+    - "\"/System/Applications/System Preferences.app\""
+    - /System/Applications/Utilities/Terminal.app
+    - /System/Applications/Utilities/Console.app
+    - "/Applications --section others"
+    - "~/Downloads --section others"
+
+- name: Reduce the size of the Dock to 40 points
+  shell: defaults write com.apple.dock tilesize -int 40
+
+- name: Show the Dock on the left-hand side
+  shell: /usr/local/bin/m dock position LEFT
+
+- name: Disable the Screensaver
+  shell: defaults write com.apple.screensaver idleTime 0
+
+- name: Arrange Files by Kind
+  shell: |
+    /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy kind" ~/Library/Preferences/com.apple.finder.plist
+    /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy kind" ~/Library/Preferences/com.apple.finder.plist
+
+- name: Set the Grid Spacing for Files
+  shell: |
+    /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 54" ~/Library/Preferences/com.apple.finder.plist
+    /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:gridSpacing 30" ~/Library/Preferences/com.apple.finder.plist
+
+- name: Use Smaller Icons
+  shell: |
+    /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 48" ~/Library/Preferences/com.apple.finder.plist
+    /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
+
+- name: Show ~/Library
+  shell: chflags nohidden ~/Library
+
+- name: Show Drives on the Desktop
+  shell: defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+
+- name: Show Hidden Files
+  shell: defaults write com.apple.finder AppleShowAllFiles -bool true
+
+- name: Show File Extensions
+  shell: defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+- name: Show the Status Bar in Finder
+  shell: defaults write com.apple.finder ShowStatusBar -bool true
+
+- name: Show the Path Bar in Finder
+  shell: defaults write com.apple.finder ShowPathbar -bool true
+
+- name: Restart Finder
+  shell: killall Finder
