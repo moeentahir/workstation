@@ -19,4 +19,6 @@
     - anydo
     - google-chrome
     - google-backup-and-sync
+    - intellij-idea-ce
+    - zoom
     state: present

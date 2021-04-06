@@ -21,7 +21,7 @@
 - name: Install homebrew packages
   homebrew:
     name: "{{ common_packages }}"
-    state: latest
+    state: present
   when: is_root_user
 
 - name: Include ubuntu specific tasks

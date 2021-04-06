@@ -1,11 +1,24 @@
 ---
-- name: Setup dev machine
+- name: Install packages
   hosts: localhost
+  tags: 
+    - packages
+  roles:
+  - packages
+
+- name: Install configuration files
+  hosts: localhost
+  tags: 
+    - configurations
   roles:
   - dotfiles
-  - packages
   - shell
   - vim
   - git
-  - mac-settings
 
+- name: Install mac settings
+  hosts: localhost
+  tags: 
+    - mac
+  roles:
+  - mac-settings
