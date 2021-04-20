@@ -4,7 +4,7 @@
 ### Install ansible
 
 ```
-python -m pip install --user ansible
+python3 -m pip install --user --upgrade ansible
 ```
 
 ### Install playbook
