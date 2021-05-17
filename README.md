@@ -4,7 +4,9 @@
 ### Install ansible
 
 ```
+python3 -m pip install --user --upgrade pip
 python3 -m pip install --user --upgrade ansible
+export PATH=$PATH:$HOME/Library/Python/3.8/bin
 ```
 
 ### Install playbook
