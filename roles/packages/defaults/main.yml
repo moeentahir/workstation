@@ -13,5 +13,6 @@ common_packages:
   - yamllint
   - zsh
   - gradle
+  - groovy
 
 is_root_user: true
