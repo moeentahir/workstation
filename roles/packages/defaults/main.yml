@@ -14,5 +14,6 @@ common_packages:
   - zsh
   - gradle
   - groovy
+  - openjdk@17
 
 is_root_user: true

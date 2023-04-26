@@ -18,7 +18,7 @@
     - adoptopenjdk13
     - anydo
     - google-chrome
-    - google-backup-and-sync
+    - google-drive
     - intellij-idea-ce
     - zoom
     state: present
