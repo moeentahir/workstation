@@ -21,4 +21,5 @@
     - google-drive
     - intellij-idea-ce
     - zoom
+    - microsoft-teams
     state: present
