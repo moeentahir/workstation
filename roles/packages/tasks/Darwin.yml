@@ -22,4 +22,6 @@
     - intellij-idea-ce
     - zoom
     - microsoft-teams
+    - whatsapp
+    - sublime-text
     state: present

@@ -15,5 +15,7 @@ common_packages:
   - gradle
   - groovy
   - openjdk@17
+  - iproute2mac
+  - dnstracer
 
 is_root_user: true
