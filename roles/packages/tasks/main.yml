@@ -3,10 +3,10 @@
   vars:
     params:
       files:
-      - '{{ ansible_distribution }}.yml'
-      - '{{ ansible_os_family }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
       paths:
-      - 'vars'
+        - 'vars'
 
 - name: Check if homebrew is installed
   shell: which brew >/dev/null 2>&1
@@ -16,7 +16,8 @@
 
 - name: Install homebrew
   shell: '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
-  when: is_root_user and does_brew_exists.rc != 0 
+  when: is_root_user and does_brew_exists.rc != 0
+  become_user: Administrator
 
 - name: Install homebrew packages
   homebrew:
@@ -39,11 +40,11 @@
     force: true
     version: master
   with_items:
-  - { dest: "~/.dotfiles/vim/vim-colors-solarized", repo: "https://github.com/altercation/vim-colors-solarized" }
-  - { dest: "~/.dotfiles/packages/diff-so-fancy", repo: "https://github.com/so-fancy/diff-so-fancy" }
-  - { dest: "~/.dotfiles/packages/powerline", repo: "https://github.com/powerline/fonts.git" }
-  - { dest: "~/.fzf", repo: "https://github.com/junegunn/fzf.git" }
-  - { dest: "~/.dotfiles/packages/iTerm2-Color-Schemes", repo: "https://github.com/mbadolato/iTerm2-Color-Schemes" }
+    - { dest: "~/.dotfiles/vim/vim-colors-solarized", repo: "https://github.com/altercation/vim-colors-solarized" }
+    - { dest: "~/.dotfiles/packages/diff-so-fancy", repo: "https://github.com/so-fancy/diff-so-fancy" }
+    - { dest: "~/.dotfiles/packages/powerline", repo: "https://github.com/powerline/fonts.git" }
+    - { dest: "~/.fzf", repo: "https://github.com/junegunn/fzf.git" }
+    - { dest: "~/.dotfiles/packages/iTerm2-Color-Schemes", repo: "https://github.com/mbadolato/iTerm2-Color-Schemes" }
 
 - name: Post package commands
   shell: "{{ item }}"
