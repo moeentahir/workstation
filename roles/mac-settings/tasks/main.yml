@@ -7,14 +7,14 @@
     - dockutil
 
 - name: Remove all items from the Dock
-  shell: /usr/local/bin/dockutil --remove all
+  shell: /opt/homebrew/bin/dockutil --remove all
 
 - name: Set the default Dock items
-  shell: "/usr/local/bin/dockutil --add {{ item }} --no-restart"
+  shell: "/opt/homebrew/bin/dockutil --add {{ item }} --no-restart"
   with_items:
     - /Applications/Safari.app
     - "\"/System/Applications/App Store.app\""
-    - "\"/System/Applications/System Preferences.app\""
+    - "\"/System/Applications/System Settings.app\""
     - /System/Applications/Utilities/Terminal.app
     - /System/Applications/Utilities/Console.app
     - "/Applications --section others"
@@ -24,7 +24,7 @@
   shell: defaults write com.apple.dock tilesize -int 40
 
 - name: Show the Dock on the left-hand side
-  shell: /usr/local/bin/m dock position LEFT
+  shell: defaults write com.apple.dock orientation -string left; defaults write com.apple.dock autohide -bool true; killall Dock
 
 - name: Disable the Screensaver
   shell: defaults write com.apple.screensaver idleTime 0

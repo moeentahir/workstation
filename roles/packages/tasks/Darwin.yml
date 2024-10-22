@@ -13,9 +13,9 @@
     - aws-vault
     - keycastr
     - iterm2
-    - adoptopenjdk8
-    - adoptopenjdk11
-    - adoptopenjdk13
+#    - adoptopenjdk8
+#    - adoptopenjdk11
+#    - adoptopenjdk13
     - anydo
     - google-chrome
     - google-drive
@@ -24,4 +24,5 @@
     - microsoft-teams
     - whatsapp
     - sublime-text
+    - rectangle
     state: present
