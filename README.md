@@ -13,7 +13,7 @@ export PATH=$PATH:$HOME/Library/Python/3.11/bin
 #### Mac OS
 
 ```
-ansible-playbook playybook.yml
+ansible-playbook playbook.yml
 ```
 
 #### Ubuntu
