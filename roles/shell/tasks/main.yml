@@ -26,3 +26,4 @@
   with_items:
     - { dest: "~/.bashrc", src: "{{ bashrc_path }}" }
     - { dest: "~/.zshrc", src: "{{ zshrc_path }}" }
+    - { dest: "~/.p10k.zsh", src: ~/.dotfiles/shell/p10k.zsh }
